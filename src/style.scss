@@ -38,6 +38,12 @@ $color-lightgrey: #cccfcd;
       border-radius: 5%;
       align-items: center;
       font-family: "Poor Story", cursive;
+      a{
+        text-decoration: none;
+      }
+      a:visited{
+        color: $color-white
+      }
     }
 
     form {
@@ -85,6 +91,13 @@ $color-lightgrey: #cccfcd;
 
     p {
       font-size: small;
+
+      a{
+        text-decoration: none;
+        &:visited{
+            color: $color-black;
+        }
+      }
     }
   }
 }

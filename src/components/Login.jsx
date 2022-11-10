@@ -5,7 +5,11 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
+
+    function handleLogin(e){
+        e.preventDefault();
+
+    }
 
   return (
     <div className="form-cont">
@@ -16,9 +20,9 @@ const Login = () => {
         <span className="greeting">
           <p>Hail, friend! So you need some keys?</p>
         </span>
-        <form>
-          <input type="email" placeholder="email..." />
-          <input type="password" placeholder="password..." />
+        <form onSubmit={handleLogin}>
+          <input type="email" placeholder="email..." onChange={(e) => setEmail(e.target.value)} value={email} required />
+          <input type="password" placeholder="password..." onChange={(e) => setPassword(e.target.value)} value={password} required />
           <button type="submit">Log Me In!</button>
         </form>
         <p>

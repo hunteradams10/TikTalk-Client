@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+
   return (
     <div className="form-cont">
       <div className="form-wrap">
@@ -17,7 +22,7 @@ const Login = () => {
           <button type="submit">Log Me In!</button>
         </form>
         <p>
-          Need an account? <Link to="./register">Register</Link>
+          Need an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

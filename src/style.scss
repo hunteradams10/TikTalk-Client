@@ -1,0 +1,89 @@
+// Colour Variables
+
+$color-orange: #ff9626;
+$color-grey: #333332;
+$color-black: #03071e;
+$color-white: #ffffff;
+$color-lightgrey: #cccfcd;
+
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+
+.form-cont {
+  background-color: $color-grey;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  .form-wrap {
+    background-color: $color-orange;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    font-family: "Poor Story", cursive;
+
+    .greeting {
+      font-size: small;
+      font-family: "Poor Story", cursive;
+    }
+
+    .brand {
+      color: $color-white;
+      background-color: $color-black;
+      font-weight: bold;
+      font-size: 26px;
+      padding: 20px 60px;
+      border-radius: 5%;
+      align-items: center;
+      font-family: "Poor Story", cursive;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        padding: 5px;
+        border: 2px solid $color-black;
+        width: 220px;
+        background-color: $color-grey;
+        font-family: "Poor Story", cursive;
+        &::placeholder {
+          color: $color-lightgrey;
+        }
+      }
+
+      button {
+        cursor: pointer;
+        background-color: $color-black;
+        color: $color-white;
+        padding: 10px;
+        border: none;
+        font-weight: bold;
+        border-bottom: 3px solid $color-grey;
+        border-right: 3px solid $color-grey;
+        font-family: "Poor Story", cursive;
+      }
+
+      label{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: small;
+        cursor: pointer;
+        justify-content: center;
+
+        img{
+            width: 32px;
+        }
+      }
+    }
+
+    p {
+      font-size: small;
+    }
+  }
+}

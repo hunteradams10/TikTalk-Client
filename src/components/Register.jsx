@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import avatarUpload from "../img/avatarUpload.png"
 
 const Register = () => {
@@ -23,7 +24,7 @@ const Register = () => {
           <button type="submit">Sign me up!</button>
         </form>
         <p>
-          Already have an account? <a href="./login">Login</a>
+          Already have an account? <Link to="./login">Login</Link>
         </p>
       </div>
     </div>

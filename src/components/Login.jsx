@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import avatarUpload from "../img/avatarUpload.png"
 
 const Login = () => {
   return (
@@ -8,15 +10,15 @@ const Login = () => {
           TikTalk <span className="pumpkin">🎃</span>
         </span>
         <span className="greeting">
-          <p>Hail, friend! Did you bring your keys?</p>
+          <p>Hail, friend! So you need some keys?</p>
         </span>
         <form>
           <input type="email" placeholder="email..." />
           <input type="password" placeholder="password..." />
-          <button type="submit">Log me in!</button>
+          <button type="submit">Log Me In!</button>
         </form>
         <p>
-          Need an account? <a href="./register">Register!</a>
+          Need an account? <Link to="./register">Register</Link>
         </p>
       </div>
     </div>

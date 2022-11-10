@@ -13,8 +13,8 @@ function App() {
     <div>
       <BrowserRouter>
       <Routes>
-        <Route path="tiktalk/register" element={<Register />} />
-        <Route path="tiktalk/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       </BrowserRouter>
     </div>

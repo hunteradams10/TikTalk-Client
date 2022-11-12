@@ -2,7 +2,6 @@ import "./style.scss"
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Chat from "./components/Chat";
-import SideBar from "./components/SideBar";
 
 import {
   BrowserRouter,

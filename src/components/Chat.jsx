@@ -1,14 +1,15 @@
-import React from 'react'
-import SideBar from './SideBar.jsx'
-import Message from './Message.jsx'
+import SideBar from "./SideBar.jsx";
+import Message from "./Message.jsx";
+import LoginBar from "./LoginBar.jsx";
 
 function Chat() {
   return (
-    <>
-    <SideBar /> 
+    <div className="chat">
+      {/* <LoginBar/> */}
+      <SideBar /> 
     <Message />
-    </>
-  )
+    </div>
+  );
 }
 
-export default Chat
+export default Chat;

@@ -1,6 +1,6 @@
 import React from 'react'
-import SideBar from '../components/SideBar.jsx'
-import Message from '../components/Message.jsx'
+import SideBar from './SideBar.jsx'
+import Message from './Message.jsx'
 
 function Chat() {
   return (

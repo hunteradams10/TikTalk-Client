@@ -38,7 +38,7 @@ const Login = () => {
         let token = data.token
         dispatch({type: 'setLoggedInUser', data: username});
         dispatch({type: 'setToken', data: token});
-        navigate('/chats')
+        navigate('/')
       }).catch((error) => console.log(error))
     }
 

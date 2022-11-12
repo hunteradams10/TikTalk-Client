@@ -5,7 +5,7 @@ import LoginBar from "./LoginBar.jsx";
 function Chat() {
   return (
     <div className="chat">
-      {/* <LoginBar/> */}
+      <LoginBar/>
       <SideBar /> 
     <Message />
     </div>

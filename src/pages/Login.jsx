@@ -8,11 +8,6 @@ const Login = () => {
 
   let navigate = useNavigate()
 
-    function handleLogin(e){
-        e.preventDefault();
-
-    }
-
     const initialFormState = {
       email: '',
       password: ''
@@ -51,7 +46,8 @@ const Login = () => {
         <span className="greeting">
           <p>Hail, friend! So you need some keys?</p>
         </span>
-        <form onSubmit={handleLogin}>
+        <form>
+          
           <input type="email" placeholder="email..." value={formState.username} onChange ={handleChange}/>
           <input type="password" placeholder="password..." value={formState.password} onChange ={handleChange}/>
           <button onClick={handleSubmit} type="submit">Log Me In!</button>

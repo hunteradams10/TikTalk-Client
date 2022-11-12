@@ -21,6 +21,7 @@ export default function LoginBar() {
     <div>
       {loggedInUser ? (
         <>
+        <p>Hey, logged in user!</p>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (

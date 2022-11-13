@@ -65,7 +65,7 @@ const Register = () => {
       setData({...data, [input.name]: input.value})
     }
 
-    async function handleSubmit(e) {
+    const handleSubmit = async(e) => {
       e.preventDefault();
       try{
         const url = "API URL FOR USERS"
@@ -90,7 +90,7 @@ const Register = () => {
           <p>Hail, friend! So you need some keys?</p>
         </span>
         <form  onSubmit={handleSubmit}>
-          <input type="text" placeholder="username..." name="name" value={data.username} required onChange={handleChange}/>
+          <input type="text" placeholder="username..." name="username" value={data.username} required onChange={handleChange}/>
           <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
           <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
           <input style={{display: "none"}} type="file" id="file"/>

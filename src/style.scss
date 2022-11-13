@@ -58,6 +58,7 @@ $color-lightgrey: #cccfcd;
         width: 220px;
         background-color: $color-grey;
         font-family: "Poor Story", cursive;
+        color: $color-white;
         &::placeholder {
           color: $color-lightgrey;
         }

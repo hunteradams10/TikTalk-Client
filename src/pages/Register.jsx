@@ -1,90 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import avatarUpload from "../img/avatarUpload.png"
-import Axios from 'axios'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Axios from 'axios';
 
 const Register = () => {
 
-  const initialFormState = {
-    email: '',
-    password: ''
-  }
-
-  const [formState, setFormState] = useState(initialFormState)
-
-  useEffect(() => {
-    Axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then(res => {
-      console.log("Getting from ::::", res.data)
-      setData(res.data)
-    }).catch(err => console.log(err))
-  }, [])
-
-  const postData = (e) => {
-    e.preventDefault();
-
-    Axios.post('https://jsonplaceholder.typicode.com/posts', {
-      username: {username},
-      email: {email},
-      password: {password}
-
-    }).then(res => console.log('Posting data', res)).catch(err => console.log(err))
-  }
-
-  function handleChange(event){
-    setFormState({
-      ...formState,
-      [event.target.name]: event.target.value
-    })
-  }
-
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
 
     // setting state for submitting email, username and password to back-end API
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
 
-    // image verification, preview once uploaded
-    const [image, setImage] = useState(null);
-    const [uploadingImage, setUploadingImage] = useState(false);
-    const [imagePreview, setImagePreview] = useState(null);
+    // // image verification, preview once uploaded
+    // const [image, setImage] = useState(null);
+    // const [uploadingImage, setUploadingImage] = useState(false);
+    // const [imagePreview, setImagePreview] = useState(null);
 
-    function validateImg(e){
-        const file = e.target.files[0]
-        if(file.size >= 1048576){
-            return alert("Your image is too powerful! Max 1MB");
-        } else{
-            setImage(file);
-            setImagePreview(URL.createObjectURL(file))
-        }
+    // function validateImg(e){
+    //     const file = e.target.files[0]
+    //     if(file.size >= 1048576){
+    //         return alert("Your image is too powerful! Max 1MB");
+    //     } else{
+    //         setImage(file);
+    //         setImagePreview(URL.createObjectURL(file))
+    //     }
+    // }
+
+    // async function uploadImage(){
+    //     const data = new FormData();
+    //     data.append('file', image);
+    //     data.append('upload_preset', 'defaultAvatarImage')
+    //     try{
+    //         setUploadingImage(true)
+    //         let response = await fetch('https://api.cloudinary.com/v1_1/dubax843g/image/upload', {
+    //             method: 'post',
+    //             body: data
+
+    //         })
+    //         const urlData = await response.json();
+    //         setUploadingImage(false);
+    //         return urlData.url 
+    //     } catch(error){
+    //         setUploadingImage(false);
+    //         console.log(error)
+    //     }
+    // }
+    // // logic for alerts when avatar is not uploaded
+    // async function handleSignup(e) {
+    //     e.preventDefault();
+    //     if(!image) return alert("Heyyy you forgot to upload an avatar!");
+    //     const url = await uploadImage(image)
+    //     console.log(url);
+    // }
+
+    const [data, setData] = useState({
+      username: "",
+      email: "",
+      password: ""
+    })
+    const [error, setError] = useState();
+    const navigate = useNavigate();
+
+    const handleChange = ({currentTarget: input}) => {
+      setData({...data, [input.name]: input.value})
     }
 
-    async function uploadImage(){
-        const data = new FormData();
-        data.append('file', image);
-        data.append('upload_preset', 'defaultAvatarImage')
-        try{
-            setUploadingImage(true)
-            let response = await fetch('https://api.cloudinary.com/v1_1/dubax843g/image/upload', {
-                method: 'post',
-                body: data
-
-            })
-            const urlData = await response.json();
-            setUploadingImage(false);
-            return urlData.url 
-        } catch(error){
-            setUploadingImage(false);
-            console.log(error)
+    async function handleSubmit(e) {
+      e.preventDefault();
+      try{
+        const url = "API URL FOR USERS"
+        const{data:response} = await Axios.post(url, data);
+        navigate("/")
+        console.log(response.message)
+      } catch(error) {
+        if(error.response && error.response.status >= 400 && error.response.status <= 500){
+          setError(error.response.data.message)
+          console.log({error})
         }
-    }
-    // logic for alerts when avatar is not uploaded
-    async function handleSignup(e) {
-        e.preventDefault();
-        if(!image) return alert("Heyyy you forgot to upload an avatar!");
-        const url = await uploadImage(image)
-        console.log(url);
+      }
     }
 
   return (
@@ -96,17 +89,17 @@ const Register = () => {
         <span className="greeting">
           <p>Hail, friend! So you need some keys?</p>
         </span>
-        <form onSubmit={handleSignup}>
-          <input type="text" placeholder="username..." onChange={handleChange}  value={username}/>
-          <input type="email" placeholder="email..." onChange={handleChange} value={email}/>
-          <input type="password" placeholder="password..." onChange={handleChange} value={password}/>
-          <input style={{display: "none"}} type="file" id="file" onChange={validateImg}/>
+        <form  onSubmit={handleSubmit}>
+          <input type="text" placeholder="username..." name="name" value={data.username} required onChange={handleChange}/>
+          <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
+          <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
+          <input style={{display: "none"}} type="file" id="file"/>
           <label htmlFor="file" id="file">
-            <img src={imagePreview || avatarUpload} alt="" />
+            <img src="" alt="" />
             <span>Upload an avatar!</span>
           </label>
-          <button type="submit" onClick={postData}>
-            {uploadingImage ? 'Getting you Registered!' : 'Sign me up!'}
+          <button type="submit" >
+            Sign Me up!
             </button>
         </form>
         <p>

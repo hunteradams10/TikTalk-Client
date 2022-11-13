@@ -47,6 +47,7 @@ const Register = () => {
           <button type="submit" >
             Sign Me up!
             </button>
+            {error && <div>{error}</div>}
         </form>
         <p>
           Don't have an account? <Link to="/register">Register</Link>

@@ -98,6 +98,7 @@ const Register = () => {
             <img src="" alt="" />
             <span>Upload an avatar!</span>
           </label>
+          {error && <div>{error}</div>}
           <button type="submit" >
             Sign Me up!
             </button>

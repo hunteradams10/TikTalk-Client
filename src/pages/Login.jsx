@@ -22,7 +22,7 @@ const Register = () => {
         const url = "API URL FOR AUTH"
         const{data:response} = await Axios.post(url, data);
         localStorage.setItem("token", response.data);
-        window.location = "/"
+        navigate("/chat")
         console.log(response.message)
       } catch(error) {
         if(error.response && error.response.status >= 400 && error.response.status <= 500){
@@ -44,6 +44,7 @@ const Register = () => {
         <form  onSubmit={handleSubmit}>
           <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
           <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
+          {error && <div>{error}</div>}
           <button type="submit" >
             Sign Me up!
             </button>

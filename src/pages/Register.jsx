@@ -1,8 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import avatarUpload from "../img/avatarUpload.png"
+import Axios from 'axios'
 
 const Register = () => {
+
+  const initialFormState = {
+    email: '',
+    password: ''
+  }
+
+  const [formState, setFormState] = useState(initialFormState)
+
+  useEffect(() => {
+    Axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then(res => {
+      console.log("Getting from ::::", res.data)
+      setData(res.data)
+    }).catch(err => console.log(err))
+  }, [])
+
+  const postData = (e) => {
+    e.preventDefault();
+
+    Axios.post('https://jsonplaceholder.typicode.com/posts', {
+      username: {username},
+      email: {email},
+      password: {password}
+
+    }).then(res => console.log('Posting data', res)).catch(err => console.log(err))
+  }
+
+  function handleChange(event){
+    setFormState({
+      ...formState,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const [data, setData] = useState([])
 
     // setting state for submitting email, username and password to back-end API
     const [email, setEmail] = useState('');
@@ -43,7 +79,7 @@ const Register = () => {
             console.log(error)
         }
     }
-    // controls for alerts when avatar is not uploaded
+    // logic for alerts when avatar is not uploaded
     async function handleSignup(e) {
         e.preventDefault();
         if(!image) return alert("Heyyy you forgot to upload an avatar!");
@@ -61,20 +97,20 @@ const Register = () => {
           <p>Hail, friend! So you need some keys?</p>
         </span>
         <form onSubmit={handleSignup}>
-          <input type="text" placeholder="username..." onChange={(e) => setUsername(e.target.value)}  value={username}/>
-          <input type="email" placeholder="email..." onChange={(e) => setEmail(e.target.value)} value={email}/>
-          <input type="password" placeholder="password..." onChange={(e) => setPassword(e.target.value)} value={password}/>
+          <input type="text" placeholder="username..." onChange={handleChange}  value={username}/>
+          <input type="email" placeholder="email..." onChange={handleChange} value={email}/>
+          <input type="password" placeholder="password..." onChange={handleChange} value={password}/>
           <input style={{display: "none"}} type="file" id="file" onChange={validateImg}/>
           <label htmlFor="file" id="file">
             <img src={imagePreview || avatarUpload} alt="" />
             <span>Upload an avatar!</span>
           </label>
-          <button type="submit">
+          <button type="submit" onClick={postData}>
             {uploadingImage ? 'Getting you Registered!' : 'Sign me up!'}
             </button>
         </form>
         <p>
-          Already have an account? <Link to="/">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>

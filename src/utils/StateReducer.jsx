@@ -8,7 +8,7 @@ export default function reducer (state, action){
         }
         case 'setToken': {
             return{
-                ... state,
+                ...state,
                 auth: {
                     ...state.auth,
                     token: action.data

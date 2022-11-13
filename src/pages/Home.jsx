@@ -1,8 +1,9 @@
 import React from 'react'
+import LoginBar from '../components/LoginBar'
 
 function Home() {
   return (
-    <div>Home</div>
+    <LoginBar />
   )
 }
 

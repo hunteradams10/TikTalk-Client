@@ -1,40 +1,35 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { login } from "../services/authServices";
-import { useNavigate } from "react-router-dom";
-import { useGlobalState } from "../utils/StateContext"
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Axios from 'axios';
 
-const Login = () => {
+const Register = () => {
 
-  let navigate = useNavigate()
+    const [data, setData] = useState({
+      username: "",
+      email: "",
+      password: ""
+    })
+    const [error, setError] = useState();
+    const navigate = useNavigate();
 
-    const initialFormState = {
-      email: '',
-      password: ''
+    const handleChange = ({currentTarget: input}) => {
+      setData({...data, [input.name]: input.value})
     }
 
-    const [formState, setFormState] = useState(initialFormState)
-
-    const {dispatch} = useGlobalState();
-
-    function handleChange(event){
-      setFormState({
-        ...formState,
-        [event.target.name]: event.target.value
-      })
-    }
-
-    function handleSubmit(event){
-      event.preventDefault()
-
-      login().then((data) => {
-
-        let username = data.username;
-        let token = data.token
-        dispatch({type: 'setLoggedInUser', data: username});
-        dispatch({type: 'setToken', data: token});
-        navigate('/')
-      }).catch((error) => console.log(error))
+    async function handleSubmit(e) {
+      e.preventDefault();
+      try{
+        const url = "API URL FOR AUTH"
+        const{data:response} = await Axios.post(url, data);
+        localStorage.setItem("token", response.data);
+        window.location = "/"
+        console.log(response.message)
+      } catch(error) {
+        if(error.response && error.response.status >= 400 && error.response.status <= 500){
+          setError(error.response.data.message)
+          console.log({error})
+        }
+      }
     }
 
   return (
@@ -46,18 +41,19 @@ const Login = () => {
         <span className="greeting">
           <p>Hail, friend! So you need some keys?</p>
         </span>
-        <form>
-          
-          <input type="email" placeholder="email..." value={formState.username} onChange ={handleChange}/>
-          <input type="password" placeholder="password..." value={formState.password} onChange ={handleChange}/>
-          <button onClick={handleSubmit} type="submit">Log Me In!</button>
+        <form  onSubmit={handleSubmit}>
+          <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
+          <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
+          <button type="submit" >
+            Sign Me up!
+            </button>
         </form>
         <p>
-          Need an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

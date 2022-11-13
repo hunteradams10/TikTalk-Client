@@ -8,8 +8,8 @@ import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { StateContext } from "./utils/StateContext";
 import { useReducer } from "react";
-
 function App() {
+
   const initialState = {
     loggedInUser: null,
     auth: null,

@@ -1,8 +1,7 @@
 import "./style.scss";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Messenger from "./pages/messenger/Messenger";
-
+import ChatMainPage from "./pages/chatMainPage/ChatMainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 
@@ -12,7 +11,7 @@ function App() {
           <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-              <Route path="/messenger" element={<Messenger />} />
+              <Route path="/chats" element={<ChatMainPage />} />
           </Routes>
         </BrowserRouter>
     </div>

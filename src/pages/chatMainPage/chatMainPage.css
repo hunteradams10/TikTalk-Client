@@ -1,13 +1,15 @@
-.messenger{
+.main-chat-wrapper{
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 70px);
 }
 
 .chat-menu{
-    flex: 3.5
+    flex: 3.5;
+    opacity: 90%;
+    background-color: rgb(251, 154, 51);
 }
 
-.chat-menu-input{
+.chat-menu-search{
     width: 90%;
     padding: 10px 0;
     border: 1px solid black;
@@ -15,11 +17,13 @@
 
 .chat-box{
     flex: 5.5;
+    background-color: #cccfcd;
 }
 
 .chat-box-wrapper{
     display: flex;
     flex-direction: column;
+
 }
 
 .chat-box-top{
@@ -33,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 20px;
 }
 
 .chat-message-input{
@@ -53,6 +58,7 @@
 
 .user-online{
     flex: 3;
+    background-color: rgb(251, 154, 51);
 }
 
 .chat-menu-wrapper,.chat-box-wrapper,.online-wrapper{

@@ -2,14 +2,14 @@ import React from 'react'
 import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/Message /Message'
 import UserOnline from '../../components/userOnline/UserOnline'
-import './messenger.css'
+import './chatMainPage.css'
 
-function Messenger() {
+function ChatMainPage() {
   return (
-      <div className="messenger">
+      <div className="main-chat-wrapper">
         <div className="chat-menu">
           <div className="chat-menu-wrapper">
-              <input placeholder="Search for chats..." className='chat-menu-input' />
+              <input placeholder="Search friends..." className='chat-menu-search' />
               <Conversation />
               <Conversation />
               <Conversation />
@@ -46,4 +46,4 @@ function Messenger() {
   )
 }
 
-export default Messenger
+export default ChatMainPage

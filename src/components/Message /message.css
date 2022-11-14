@@ -19,8 +19,8 @@
 .message-text{
     padding: 10px;
     border-radius: 20px;
-    background-color: blue;
-    color: white;
+    background-color: white;
+    color: black;
     max-width: 300;
 }
 

@@ -22,7 +22,7 @@ const Register = () => {
         const url = "API URL FOR AUTH"
         const{data:response} = await Axios.post(url, data);
         localStorage.setItem("token", response.data);
-        window.location = "/"
+        navigate("/chats")
         console.log(response.message)
       } catch(error) {
         if(error.response && error.response.status >= 400 && error.response.status <= 500){

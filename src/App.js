@@ -1,9 +1,7 @@
 import "./style.scss";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Chat from "./components/Chat";
-import Home from "./pages/Home";
-
+import ChatMainPage from "./pages/chatMainPage/ChatMainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 
@@ -11,10 +9,9 @@ function App() {
     <div>
         <BrowserRouter>
           <Routes>
-              <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/chat" element={<Chat />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/chats" element={<ChatMainPage />} />
           </Routes>
         </BrowserRouter>
     </div>

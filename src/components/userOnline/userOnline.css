@@ -1,0 +1,30 @@
+.user-online-friend {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.user-online-image-container {
+  position: relative;
+  margin-right: 10px;
+}
+
+.user-online-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.user-online-badge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: green;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}

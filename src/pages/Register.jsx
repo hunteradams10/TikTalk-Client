@@ -68,7 +68,7 @@ const Register = () => {
     const handleSubmit = async(e) => {
       e.preventDefault();
       try{
-        const url = "API URL FOR USERS"
+        const url = "http://13.236.71.124:1987/users/sign-up"
         const{data:response} = await Axios.post(url, data);
         navigate("/")
         console.log(response.message)

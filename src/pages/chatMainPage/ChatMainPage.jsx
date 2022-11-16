@@ -5,6 +5,8 @@ import UserOnline from '../../components/userOnline/UserOnline'
 import './chatMainPage.css'
 
 function ChatMainPage() {
+
+  
   return (
       <div className="main-chat-wrapper">
         <div className="chat-menu">

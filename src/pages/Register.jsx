@@ -69,7 +69,8 @@ const Register = () => {
       e.preventDefault();
       try{
         const url = "http://13.236.71.124:1987/users/sign-up"
-        const{data:response} = await Axios.post(url, data).then(navigate("/chat"))
+        const res = await Axios.post(url, data).then(navigate("/chat"))
+        console.log(res)
       } catch(error) {
           setError(error.response.data.message)
           console.log({error})

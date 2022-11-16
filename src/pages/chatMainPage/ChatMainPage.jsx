@@ -1,11 +1,9 @@
-import React from 'react'
 import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/Message /Message'
 import UserOnline from '../../components/userOnline/UserOnline'
 import './chatMainPage.css'
 
 function ChatMainPage() {
-
   
   return (
       <div className="main-chat-wrapper">

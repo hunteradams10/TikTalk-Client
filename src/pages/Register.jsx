@@ -68,7 +68,7 @@ const Register = () => {
     const handleSubmit = async(e) => {
       e.preventDefault();
       try{
-        const url = "http://13.236.71.124:1987/users/sign-up"
+        const url = "https://tiktalk-server.codergirlsu.dev/"
         const res = await Axios.post(url, data).then(navigate("/chat"))
         console.log(res)
       } catch(error) {

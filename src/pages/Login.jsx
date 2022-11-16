@@ -19,7 +19,7 @@ const Register = () => {
     async function handleSubmit(e) {
       e.preventDefault();
       try{
-        const url = "API URL FOR AUTH"
+        const url = "https://tiktalk-server.codergirlsu.dev/"
         const{data:response} = await Axios.post(url, data);
         localStorage.setItem("token", response.data);
         navigate("/chats")
@@ -45,7 +45,7 @@ const Register = () => {
           <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
           <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
           <button type="submit" >
-            Sign Me up!
+            Log Me In!
             </button>
             {error && <div>{error}</div>}
         </form>

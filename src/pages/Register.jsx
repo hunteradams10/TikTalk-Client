@@ -68,16 +68,12 @@ const Register = () => {
     const handleSubmit = async(e) => {
       e.preventDefault();
       try{
-        const url = "http://13.236.71.124:1987/"
-        const{data:response} = await Axios.post(url, data);
-        navigate("/")
-        console.log(response.message)
+        const url = "http://13.236.71.124:1987/users/sign-up"
+        const{data:response} = await Axios.post(url, data).then(navigate("/chat"))
       } catch(error) {
-        if(error.response && error.response.status >= 400 && error.response.status <= 500){
           setError(error.response.data.message)
           console.log({error})
         }
-      }
     }
 
   return (

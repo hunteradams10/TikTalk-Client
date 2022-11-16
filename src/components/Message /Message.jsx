@@ -12,6 +12,7 @@ function Message({own}) {
         <div className="message-bottom">
             1 hour ago
         </div>
+        
     </div>
   )
 }

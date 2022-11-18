@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSignup } from "../hooks/useSignup";
 // import Axios from 'axios';
 
@@ -60,8 +60,6 @@ const Register = () => {
     const [password, setPassword] = useState();
     const { signup, error, isLoading } = useSignup();
 
-    const navigate = useNavigate()
-
     const handleSubmit = async(e) => {
       e.preventDefault();
       // try{
@@ -73,7 +71,7 @@ const Register = () => {
       //     console.log({error})
       //   }
 
-      await signup(username, email, password).then(navigate("/chat"))
+      await signup(username, email, password)
     }
 
   return (

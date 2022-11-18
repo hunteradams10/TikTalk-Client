@@ -2,10 +2,15 @@ import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/Message /Message'
 import UserOnline from '../../components/userOnline/UserOnline'
 import './chatMainPage.css'
+import Navbar from '../../components/Navbar/Navbar'
 
 function ChatMainPage() {
   
   return (
+    <>
+    <div>
+    <Navbar />
+    </div>
       <div className="main-chat-wrapper">
         <div className="chat-menu">
           <div className="chat-menu-wrapper">
@@ -43,6 +48,7 @@ function ChatMainPage() {
           </div>
         </div>
       </div>
+      </>
   )
 }
 

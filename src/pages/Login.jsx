@@ -1,34 +1,24 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Axios from 'axios';
+import { Link } from "react-router-dom";
+// import Axios from 'axios';
 
-const Register = () => {
+const Login = () => {
 
-    const [data, setData] = useState({
-      username: "",
-      email: "",
-      password: ""
-    })
-    const [error, setError] = useState();
-    const navigate = useNavigate();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
 
-    const handleChange = ({currentTarget: input}) => {
-      setData({...data, [input.name]: input.value})
-    }
-
-    async function handleSubmit(e) {
+    const handleSubmit = async(e) => {
       e.preventDefault();
-      try{
-        const url = "https://tiktalk-server.codergirlsu.dev/users/sign-in"
-        const{data:response} = await Axios.post(url, data);
-        console.log(response.data)
-        navigate("/chats")
-      } catch(error) {
-        if(error.response && error.response.status >= 400 && error.response.status <= 500){
-          setError(error.response.data.message)
-          console.log({error})
-        }
-      }
+      // try{
+      //   const url = "https://tiktalk-server.codergirlsu.dev/users/sign-up"
+      //   const res = await Axios.post(url, data).then(navigate("/chat"))
+      //   console.log(res)
+      // } catch(error) {
+      //     setError(error.response.data.message)
+      //     console.log({error})
+      //   }
+
+      console.log(email, password)
     }
 
   return (
@@ -38,22 +28,21 @@ const Register = () => {
           <Link to="/login">TikTalk <span className="pumpkin">🎃</span></Link>
         </span>
         <span className="greeting">
-          <p>Hail, friend! So you need some keys?</p>
+          <p>Hail, friend! Did you bring your keys?</p>
         </span>
         <form  onSubmit={handleSubmit}>
-          <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
-          <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
-          <button type="submit" >
-            Log Me In!
+          <input type="email" placeholder="email..." name="email"value={email || ''} required onChange={(e) => setEmail(e.target.value)}/>
+          <input type="password" placeholder="password..." name="password" value={password || ''} required onChange={(e) => setPassword(e.target.value)}/>
+          <button type="submit" onSubmit={handleSubmit} >
+            Sign Me In!
             </button>
-            {error && <div>{error}</div>}
         </form>
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/">Register</Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default Login;

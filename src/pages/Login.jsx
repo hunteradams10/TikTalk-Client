@@ -19,11 +19,10 @@ const Register = () => {
     async function handleSubmit(e) {
       e.preventDefault();
       try{
-        const url = "https://tiktalk-server.codergirlsu.dev/"
+        const url = "https://tiktalk-server.codergirlsu.dev/users/sign-in"
         const{data:response} = await Axios.post(url, data);
-        localStorage.setItem("token", response.data);
+        console.log(response.data)
         navigate("/chats")
-        console.log(response.message)
       } catch(error) {
         if(error.response && error.response.status >= 400 && error.response.status <= 500){
           setError(error.response.data.message)

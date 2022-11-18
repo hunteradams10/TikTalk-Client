@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import Axios from 'axios';
+import { useLogin } from '../hooks/useLogin'
 
 const Login = () => {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const { login, error, isLoading } = useLogin()
 
     const handleSubmit = async(e) => {
       e.preventDefault();
@@ -18,7 +19,7 @@ const Login = () => {
       //     console.log({error})
       //   }
 
-      console.log(email, password)
+      await login(email, password)
     }
 
   return (
@@ -33,12 +34,13 @@ const Login = () => {
         <form  onSubmit={handleSubmit}>
           <input type="email" placeholder="email..." name="email"value={email || ''} required onChange={(e) => setEmail(e.target.value)}/>
           <input type="password" placeholder="password..." name="password" value={password || ''} required onChange={(e) => setPassword(e.target.value)}/>
-          <button type="submit" onSubmit={handleSubmit} >
+          <button type="submit" onSubmit={handleSubmit} disabled={isLoading}>
             Sign Me In!
             </button>
+            {error && <div className="error">{error}</div>}
         </form>
         <p>
-          Don't have an account? <Link to="/">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

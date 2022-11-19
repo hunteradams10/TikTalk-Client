@@ -17,7 +17,7 @@ function ChatMainPage() {
 async function fetchData(){
     try{
         const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
-        const res = await Axios.get(url, {headers: { 'Authorization': "Bearer" + " " + jwt }})
+        const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
         console.log(">>>>" + JSON.stringify(res.data))
       setHistory(res.data)
 

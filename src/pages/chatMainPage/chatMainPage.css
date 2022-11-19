@@ -56,11 +56,6 @@
     cursor: pointer;
 }
 
-.user-online{
-    flex: 3;
-    background-color: rgb(251, 154, 51);
-}
-
 .chat-menu-wrapper,.chat-box-wrapper,.online-wrapper{
     padding: 10px;
     height: 100%;

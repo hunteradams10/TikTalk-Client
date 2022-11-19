@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Conversation from '../../components/conversations/Conversation'
 import Message from '../../components/Message /Message'
-import UserOnline from '../../components/userOnline/UserOnline'
 import './chatMainPage.css'
 import Axios from "axios"
 import Navbar from '../../components/Navbar/Navbar'
@@ -94,14 +93,6 @@ function ChatMainPage() {
               <textarea className="chat-message-input" placeholder="say something!"></textarea>
               <button className="chat-submit-button">Send</button>
             </div>
-          </div>
-        </div>
-        <div className="user-online">
-          <div className="online-wrapper">
-            <UserOnline />
-            <UserOnline />
-            <UserOnline />
-            <UserOnline />
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ function ChatMainPage() {
           
           // checks to see if there was a token error
           // if so, redirect to the sign in page
-          if (res.data.error != null && res.data.error == "invalid token") {
+          if (res.data.error != null && res.data.error === "invalid token") {
             clearAllIntervals()
             nav("/")
           }

@@ -22,7 +22,8 @@ const Login = () => {
       //     console.log({error})
       //   }
 
-      await login(email, password).then({login} ? navigate("/chat") : null)
+      await login(email, password)
+      navigate("/chat")
     }
 
   return (

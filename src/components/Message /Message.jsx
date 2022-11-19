@@ -3,9 +3,6 @@ import './message.css'
 import React from 'react'
 
 function Message({data,userdata}) {
-
-  //console.log(data.senderId)
-  //console.log(userdata.userId)
   return (
     <div className= {data.senderId === userdata.userId ? "message own" : "message"}>
         <div className="message-top">

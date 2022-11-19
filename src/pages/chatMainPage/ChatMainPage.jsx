@@ -10,40 +10,55 @@ import { useNavigate } from "react-router-dom";
 function ChatMainPage() {
   let nav = useNavigate()
   let conversationId = "6373403e0146ddf60826ebe7" 
-
-
- 
-
   const [history, setHistory] = useState([])
 
+  function clearAllIntervals() {
+    // Get a reference to the last interval + 1
+    const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
 
-async function fetchData(){
-    try{
-      let userData = localStorage.getItem("user")
-      if (userData == null) {
-        nav("/")
-      }
-
-      let userObj = JSON.parse(userData)  // get user data and convert user string to object
-      let jwt = userObj.jwt
-
-        const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
-        const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
-        console.log(">>>>" + JSON.stringify(res.data))
-        setHistory(res.data)
-
-      } catch(error) {
-        //setError(error.response.data.message)
-        console.log({error})
+    // Clear any timeout/interval up to that id
+    for (let i = 1; i < interval_id; i++) {
+      window.clearInterval(i);
     }
   }
+
+  const getUserData = () => {
+    let userData = localStorage.getItem("user")
+    let userObj = JSON.parse(userData)
+    return userObj
+  }
+
   useEffect(()=>{
+
+    const fetchData = async () => {
+      try{
+        console.log("Refreshing messages")
+        // setUserdata(localStorage.getItem("user"))
+        let userData = getUserData() 
+        if (userData == null) {
+          clearAllIntervals()
+          nav("/")
+        }
+  
+        // let userObj = JSON.parse(userData)  // get user data and convert user string to object
+        let jwt = userData.jwt
+  
+          const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
+          const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
+          setHistory(res.data)
+  
+        } catch(error) {
+          console.log({error})
+      }
+    }
+    
+    clearAllIntervals()
     setInterval(()=>{
       fetchData()
   },5000)
+    
     fetchData()
-    // eslint-disable-next-line
-},[])  
+},[conversationId, nav])  
 
   return (
     <>
@@ -65,7 +80,7 @@ async function fetchData(){
             <div className="chat-box-top">
               {/* <Message /> */}
               { history.map((message)=>{
-                return (<Message data={message}/>)
+                return (<Message data={message} userdata={getUserData()}/>)
               })}
             </div>
             <div className="chat-box-bottom">

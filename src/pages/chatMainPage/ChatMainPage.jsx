@@ -4,12 +4,7 @@ import Message from '../../components/Message /Message'
 import UserOnline from '../../components/userOnline/UserOnline'
 import './chatMainPage.css'
 import Axios from "axios"
-
-import { useNavigate } from "react-router-dom";
-
-
-// add the jwt to the header 
-// use the Axios to set the header
+import Navbar from '../../components/Navbar/Navbar'
 
 function ChatMainPage() {
   let conversationId = "6373403e0146ddf60826ebe7"
@@ -40,6 +35,10 @@ async function fetchData(){
 },[])  
 
   return (
+    <>
+    <div>
+    <Navbar />
+    </div>
       <div className="main-chat-wrapper">
         <div className="chat-menu">
           <div className="chat-menu-wrapper">
@@ -73,6 +72,7 @@ async function fetchData(){
           </div>
         </div>
       </div>
+      </>
   )
 }
 

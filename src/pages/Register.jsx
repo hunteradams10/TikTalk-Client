@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Axios from 'axios';
+import { Link } from "react-router-dom";
+import { useSignup } from "../hooks/useSignup";
+// import Axios from 'axios';
 
 const Register = () => {
 
@@ -52,29 +53,25 @@ const Register = () => {
     //     const url = await uploadImage(image)
     //     console.log(url);
     // }
+    // const navigate = useNavigate();
 
-    const [data, setData] = useState({
-      username: "",
-      email: "",
-      password: ""
-    })
-    const [error, setError] = useState();
-    const navigate = useNavigate();
-
-    const handleChange = ({currentTarget: input}) => {
-      setData({...data, [input.name]: input.value})
-    }
+    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const { signup, error, isLoading } = useSignup();
 
     const handleSubmit = async(e) => {
       e.preventDefault();
-      try{
-        const url = "https://tiktalk-server.codergirlsu.dev/users/sign-up"
-        const res = await Axios.post(url, data).then(navigate("/chat"))
-        console.log(res)
-      } catch(error) {
-          setError(error.response.data.message)
-          console.log({error})
-        }
+      // try{
+      //   const url = "https://tiktalk-server.codergirlsu.dev/users/sign-up"
+      //   const res = await Axios.post(url, data).then(navigate("/chat"))
+      //   console.log(res)
+      // } catch(error) {
+      //     setError(error.response.data.message)
+      //     console.log({error})
+      //   }
+
+      await signup(username, email, password)
     }
 
   return (
@@ -87,21 +84,21 @@ const Register = () => {
           <p>Hail, friend! So you need some keys?</p>
         </span>
         <form  onSubmit={handleSubmit}>
-          <input type="text" placeholder="username..." name="username" value={data.username} required onChange={handleChange}/>
-          <input type="email" placeholder="email..." name="email"value={data.email} required onChange={handleChange}/>
-          <input type="password" placeholder="password..." name="password" value={data.password} required onChange={handleChange}/>
+          <input type="text" placeholder="username..." name="username" value={username || ""} required onChange={(e) => setUsername(e.target.value)}/>
+          <input type="email" placeholder="email..." name="email"value={email || ""} required onChange={(e) => setEmail(e.target.value)}/>
+          <input type="password" placeholder="password..." name="password" value={password || ''} required onChange={(e) => setPassword(e.target.value)}/>
           <input style={{display: "none"}} type="file" id="file"/>
           <label htmlFor="file" id="file">
             <img src="" alt="" />
             <span>Upload an avatar!</span>
           </label>
-          {error && <div>{error}</div>}
-          <button type="submit" >
+          <button type="submit" disabled={isLoading} >
             Sign Me up!
             </button>
+            {error && <div className="error">{error}</div>}
         </form>
         <p>
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/">Login</Link>
         </p>
       </div>
     </div>

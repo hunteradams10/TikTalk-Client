@@ -7,7 +7,6 @@ import Axios from "axios"
 import Navbar from '../../components/Navbar/Navbar'
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import axios from 'axios'
 
 function ChatMainPage() {
   let nav = useNavigate()
@@ -27,6 +26,8 @@ function ChatMainPage() {
   }
 
   useEffect(()=>{
+  
+    
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("user change")
@@ -48,11 +49,14 @@ function ChatMainPage() {
           const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
         
           setHistory(res.data)
-  
+          let chat = document.querySelector(".chat-box-top")
+          chat.scrollTop = chat.scrollHeight
+
         } catch(error) {
           console.log({error})
       }
     }
+    
     
     clearAllIntervals()
     setInterval(()=>{
@@ -63,10 +67,19 @@ function ChatMainPage() {
 
 async function handleSend(event){
   event.preventDefault()
-  console.log(newMessage)
+  setHistory((history)=>[...history, {_id:"0000", message: newMessage, senderId: auth.currentUser.uid, createdAt: new Date()}])
 
-  const url = "https://tiktalk-server.codergirlsu.dev/messages/" + conversationId + newMessage
-  const res = await Axios.post(url, {headers: { 'Authorization': "Bearer " + jwt }})
+  let jwt = auth.currentUser.accessToken
+  const url = "https://tiktalk-server.codergirlsu.dev/messages/"
+  const data = {
+    groupId: conversationId,
+    message: newMessage
+  }
+  await Axios.post(url, data, {headers: { 'Authorization': "Bearer " + jwt }})
+  setNewMessage("")
+  let chat = document.querySelector(".chat-box-top")
+    chat.scrollTop = chat.scrollHeight
+ 
 }
 
 function handleOnChange(event){

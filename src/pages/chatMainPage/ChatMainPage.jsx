@@ -12,6 +12,7 @@ function ChatMainPage() {
   let conversationId = "6373403e0146ddf60826ebe7" 
   const auth = getAuth()
   const [history, setHistory] = useState([])
+  const [newMessage, setNewMessage] = useState("")
 
   function clearAllIntervals() {
     // Get a reference to the last interval + 1
@@ -24,6 +25,8 @@ function ChatMainPage() {
   }
 
   useEffect(()=>{
+  
+    
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("user change")
@@ -45,17 +48,42 @@ function ChatMainPage() {
           const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
         
           setHistory(res.data)
-  
+          let chat = document.querySelector(".chat-box-top")
+          chat.scrollTop = chat.scrollHeight
+
         } catch(error) {
           console.log({error})
       }
     }
+    
     
     clearAllIntervals()
     setInterval(()=>{
       fetchData()
   },3000)
 },[conversationId, nav, auth])  
+
+
+async function handleSend(event){
+  event.preventDefault()
+  setHistory((history)=>[...history, {_id:"0000", message: newMessage, senderId: auth.currentUser.uid, createdAt: new Date()}])
+
+  let jwt = auth.currentUser.accessToken
+  const url = "https://tiktalk-server.codergirlsu.dev/messages/"
+  const data = {
+    groupId: conversationId,
+    message: newMessage
+  }
+  await Axios.post(url, data, {headers: { 'Authorization': "Bearer " + jwt }})
+  setNewMessage("")
+  let chat = document.querySelector(".chat-box-top")
+    chat.scrollTop = chat.scrollHeight
+ 
+}
+
+function handleOnChange(event){
+  setNewMessage(event.target.value)
+}
 
   return (
     <>
@@ -81,8 +109,8 @@ function ChatMainPage() {
               })}
             </div>
             <div className="chat-box-bottom">
-              <textarea className="chat-message-input" placeholder="say something!"></textarea>
-              <button className="chat-submit-button">Send</button>
+              <textarea className="chat-message-input" placeholder="say something!" value={newMessage} onChange={handleOnChange}></textarea>
+              <button className="chat-submit-button" onClick={handleSend}>Send</button>
             </div>
           </div>
         </div>

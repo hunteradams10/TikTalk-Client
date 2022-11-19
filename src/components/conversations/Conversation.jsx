@@ -1,17 +1,7 @@
 import React from 'react'
 import './conversation.css'
-import Axios from "axios"
-import { useEffect } from 'react'
 
 function Conversation() {
-
-  useEffect(() => {fetchConversations()})
-
-  function fetchConversations() {
-    Axios.get("https://tiktalk-server.codergirlsu.dev/groups/history").then((res) => {
-      console.log(res.data)
-    })
-  }
 
   
   return (

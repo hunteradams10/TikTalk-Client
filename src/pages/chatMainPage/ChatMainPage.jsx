@@ -7,12 +7,14 @@ import Axios from "axios"
 import Navbar from '../../components/Navbar/Navbar'
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import axios from 'axios'
 
 function ChatMainPage() {
   let nav = useNavigate()
   let conversationId = "6373403e0146ddf60826ebe7" 
   const auth = getAuth()
   const [history, setHistory] = useState([])
+  const [newMessage, setNewMessage] = useState("")
 
   function clearAllIntervals() {
     // Get a reference to the last interval + 1
@@ -58,6 +60,19 @@ function ChatMainPage() {
   },3000)
 },[conversationId, nav, auth])  
 
+
+async function handleSend(event){
+  event.preventDefault()
+  console.log(newMessage)
+
+  const url = "https://tiktalk-server.codergirlsu.dev/messages/" + conversationId + newMessage
+  const res = await Axios.post(url, {headers: { 'Authorization': "Bearer " + jwt }})
+}
+
+function handleOnChange(event){
+  setNewMessage(event.target.value)
+}
+
   return (
     <>
     <div>
@@ -82,8 +97,8 @@ function ChatMainPage() {
               })}
             </div>
             <div className="chat-box-bottom">
-              <textarea className="chat-message-input" placeholder="say something!"></textarea>
-              <button className="chat-submit-button">Send</button>
+              <textarea className="chat-message-input" placeholder="say something!" value={newMessage} onChange={handleOnChange}></textarea>
+              <button className="chat-submit-button" onClick={handleSend}>Send</button>
             </div>
           </div>
         </div>

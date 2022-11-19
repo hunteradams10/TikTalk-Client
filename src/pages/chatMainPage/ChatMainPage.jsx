@@ -45,6 +45,13 @@ function ChatMainPage() {
   
           const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
           const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
+          
+          // checks to see if there was a token error
+          // if so, redirect to the sign in page
+          if (res.data.error != null && res.data.error == "invalid token") {
+            clearAllIntervals()
+            nav("/")
+          }
           setHistory(res.data)
   
         } catch(error) {
@@ -80,7 +87,7 @@ function ChatMainPage() {
             <div className="chat-box-top">
               {/* <Message /> */}
               { history.map((message)=>{
-                return (<Message data={message} userdata={getUserData()}/>)
+                return (<Message key={message._id} data={message} userdata={getUserData()}/>)
               })}
             </div>
             <div className="chat-box-bottom">

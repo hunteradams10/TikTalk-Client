@@ -5,10 +5,12 @@ import './chatMainPage.css'
 import Axios from "axios"
 import Navbar from '../../components/Navbar/Navbar'
 import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function ChatMainPage() {
   let nav = useNavigate()
   let conversationId = "6373403e0146ddf60826ebe7" 
+  const auth = getAuth()
   const [history, setHistory] = useState([])
 
   function clearAllIntervals() {
@@ -21,36 +23,27 @@ function ChatMainPage() {
     }
   }
 
-  const getUserData = () => {
-    let userData = localStorage.getItem("user")
-    let userObj = JSON.parse(userData)
-    return userObj
-  }
-
   useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("user change")
+        fetchData()
+      }
+    });
 
     const fetchData = async () => {
       try{
         console.log("Refreshing messages")
-        // setUserdata(localStorage.getItem("user"))
-        let userData = getUserData() 
-        if (userData == null) {
-          clearAllIntervals()
-          nav("/")
+        if (!auth.currentUser) {
+          console.log("no current user")
+            clearAllIntervals()
+            nav("/")  
         }
-  
-        // let userObj = JSON.parse(userData)  // get user data and convert user string to object
-        let jwt = userData.jwt
+        let jwt = auth.currentUser.accessToken
   
           const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
           const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
-          
-          // checks to see if there was a token error
-          // if so, redirect to the sign in page
-          if (res.data.error != null && res.data.error === "invalid token") {
-            clearAllIntervals()
-            nav("/")
-          }
+        
           setHistory(res.data)
   
         } catch(error) {
@@ -61,10 +54,8 @@ function ChatMainPage() {
     clearAllIntervals()
     setInterval(()=>{
       fetchData()
-  },5000)
-    
-    fetchData()
-},[conversationId, nav])  
+  },3000)
+},[conversationId, nav, auth])  
 
   return (
     <>
@@ -86,7 +77,7 @@ function ChatMainPage() {
             <div className="chat-box-top">
               {/* <Message /> */}
               { history.map((message)=>{
-                return (<Message key={message._id} data={message} userdata={getUserData()}/>)
+                return (<Message key={message._id} data={message}/>)
               })}
             </div>
             <div className="chat-box-bottom">

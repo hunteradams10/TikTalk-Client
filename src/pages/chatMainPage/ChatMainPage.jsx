@@ -5,34 +5,67 @@ import UserOnline from '../../components/userOnline/UserOnline'
 import './chatMainPage.css'
 import Axios from "axios"
 import Navbar from '../../components/Navbar/Navbar'
+import { useNavigate } from "react-router-dom";
 
 function ChatMainPage() {
-  let conversationId = "6373403e0146ddf60826ebe7"
-  let jwt = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY4MDljZmYxMTZlNWJhNzQwNzQ1YmZlZGE1OGUxNmU4MmYzZmQ4MDUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiZGFkYWRhIiwicmVndWxhclVzZXIiOnRydWUsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90aWstdGFsay1kYzAxOCIsImF1ZCI6InRpay10YWxrLWRjMDE4IiwiYXV0aF90aW1lIjoxNjY4NzcyOTQ3LCJ1c2VyX2lkIjoicVplOUEwQzBLQ1BudEwwZVoyOUtUS2thb0tIMiIsInN1YiI6InFaZTlBMEMwS0NQbnRMMGVaMjlLVEtrYW9LSDIiLCJpYXQiOjE2Njg3NzI5NDcsImV4cCI6MTY2ODc3NjU0NywiZW1haWwiOiJ0ZXN0MTNAdGVzdDEzLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInRlc3QxM0B0ZXN0MTMuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.rW9Qmo82RQLY4d6279teCadkdmbbGCdwi1SG7uoDN9eGDKNwmgZQPVzZ0Ze_V7o7lmDpXotJDWAolxIJVndtjwZbPOqlOv4liL_jOFgKeRmf34vqaQCFuFDHqmDwDsYJ--CJT_nbvbUcYuvF6IzXXgPs2YOvLbUuBiULCM2p9OpdrlGMGhZouFIDYMcmJxZskgyyv-NBCLXO93kNGJTmKwUB0BqKOxFf8LMwV5if_7MuQJL4e_U0F7fUWcBHOfAwj9bdz_zM_VmUXV8Nat5CRVYzYROApNsvQuF8p-0mlx9C9ZZL4FhQAOiqB-RN2mXe8BF8BMnB6Gpgm7LTeTr88Q"
- 
-
+  let nav = useNavigate()
+  let conversationId = "6373403e0146ddf60826ebe7" 
   const [history, setHistory] = useState([])
 
+  function clearAllIntervals() {
+    // Get a reference to the last interval + 1
+    const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
 
-async function fetchData(){
-    try{
-        const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
-        const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
-        console.log(">>>>" + JSON.stringify(res.data))
-      setHistory(res.data)
-
-      } catch(error) {
-        //setError(error.response.data.message)
-        console.log({error})
+    // Clear any timeout/interval up to that id
+    for (let i = 1; i < interval_id; i++) {
+      window.clearInterval(i);
     }
   }
+
+  const getUserData = () => {
+    let userData = localStorage.getItem("user")
+    let userObj = JSON.parse(userData)
+    return userObj
+  }
+
   useEffect(()=>{
+
+    const fetchData = async () => {
+      try{
+        console.log("Refreshing messages")
+        // setUserdata(localStorage.getItem("user"))
+        let userData = getUserData() 
+        if (userData == null) {
+          clearAllIntervals()
+          nav("/")
+        }
+  
+        // let userObj = JSON.parse(userData)  // get user data and convert user string to object
+        let jwt = userData.jwt
+  
+          const url = "https://tiktalk-server.codergirlsu.dev/groups/history?groupId=" + conversationId
+          const res = await Axios.get(url, {headers: { 'Authorization': "Bearer " + jwt }})
+          
+          // checks to see if there was a token error
+          // if so, redirect to the sign in page
+          if (res.data.error != null && res.data.error === "invalid token") {
+            clearAllIntervals()
+            nav("/")
+          }
+          setHistory(res.data)
+  
+        } catch(error) {
+          console.log({error})
+      }
+    }
+    
+    clearAllIntervals()
     setInterval(()=>{
       fetchData()
   },5000)
+    
     fetchData()
-    // eslint-disable-next-line
-},[])  
+},[conversationId, nav])  
 
   return (
     <>
@@ -54,7 +87,7 @@ async function fetchData(){
             <div className="chat-box-top">
               {/* <Message /> */}
               { history.map((message)=>{
-                return (<Message data={message}/>)
+                return (<Message key={message._id} data={message} userdata={getUserData()}/>)
               })}
             </div>
             <div className="chat-box-bottom">

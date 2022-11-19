@@ -22,7 +22,7 @@ const Register = () => {
         const url = "https://tiktalk-server.codergirlsu.dev/users/sign-in"
         const{data:response} = await Axios.post(url, data);
         console.log(response.data)
-        navigate("/chats")
+        navigate("/chat")
       } catch(error) {
         if(error.response && error.response.status >= 400 && error.response.status <= 500){
           setError(error.response.data.message)

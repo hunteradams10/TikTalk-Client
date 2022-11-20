@@ -1,5 +1,5 @@
 import React from "react";
-import './navbar.css'
+import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
 import { useNavigate } from "react-router-dom";
@@ -17,28 +17,34 @@ function Navbar() {
     navigate("/");
   };
   return (
-    <header>
-      <div className="nav-container">
+    <nav className="nav">
       <Link to="/">
-            <h1>Tiktalk 🎃</h1>
-        </Link>
-        <div className="nav">
-        
-          {user && (
-            <div>
-              <span className="username">{user.displayName}</span>
-              <button className="button" onClick={handleClick}>Log Out</button>
-            </div>
-          )}
-          {!user && (
-            <div>
-              <Link to="/">Login</Link>
-              <Link to="/register">Sign Up</Link>
-            </div>
-          )}
-        </div>
-      </div>
-    </header>
+        <h1>Tiktalk 🎃</h1>
+      </Link>
+
+      {user && (
+        <ul>
+          <li>
+            <span className="username">{user.displayName}</span>
+          </li>
+          <li>
+            <button className="button" onClick={handleClick}>
+              Log Out
+            </button>
+          </li>
+        </ul>
+      )}
+      {!user && (
+        <ul>
+          <li>
+            <Link to="/">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Sign Up</Link>
+          </li>
+        </ul>
+      )}
+    </nav>
   );
 }
 

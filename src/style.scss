@@ -16,6 +16,10 @@ $color-lightgrey: #cccfcd;
   box-sizing: border-box;
 }
 
+body{
+  margin: 0;
+}
+
 .form-cont {
   background-color: $color-grey;
   display: flex;

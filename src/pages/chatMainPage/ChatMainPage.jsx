@@ -93,7 +93,7 @@ function handleOnChange(event){
       <div className="main-chat-wrapper">
         <div className="chat-menu">
           <div className="chat-menu-wrapper">
-              <input placeholder="Search friends..." className='chat-menu-search' />
+              <h1 className='your-chats-title'>Your Chats</h1>
               <Conversation />
               <Conversation />
               <Conversation />

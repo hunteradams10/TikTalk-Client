@@ -7,17 +7,18 @@
 }
 
 .conversation:hover{
-    background-color: #fa8100 !important;
+    background-color: rgb(253, 188, 117) !important;
 }
 
 .conversation-image{
     width: 40px;
     height: 40px;
-    margin-right: 20px;
+    margin-right: 10px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .conversation-name{
-    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
 }

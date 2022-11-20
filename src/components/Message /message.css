@@ -19,14 +19,18 @@
 .message-text{
     padding: 10px;
     border-radius: 20px;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: rgb(225, 224, 224);
     max-width: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }
 
 .message-bottom{
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .message.own{
@@ -34,6 +38,6 @@
 }
 
 .message.own .message-text{
-    background-color: gray;
-    color: white;
+    background-color: #ff9626;
+    color: rgb(29, 29, 29);
 }

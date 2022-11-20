@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
@@ -16,8 +16,19 @@ function Navbar() {
     logout();
     navigate("/");
   };
+
+  const [sticky, setSticky] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 200)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
   return (
-    <nav className="nav">
+    <nav className={`nav ${sticky ? "sticky" : ""}`}>
       <Link to="/">
         <h1>Tiktalk 🎃</h1>
       </Link>

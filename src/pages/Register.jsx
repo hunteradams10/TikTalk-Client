@@ -88,10 +88,6 @@ const Register = () => {
           <input type="email" placeholder="email..." name="email"value={email || ""} required onChange={(e) => setEmail(e.target.value)}/>
           <input type="password" placeholder="password..." name="password" value={password || ''} required onChange={(e) => setPassword(e.target.value)}/>
           <input style={{display: "none"}} type="file" id="file"/>
-          <label htmlFor="file" id="file">
-            <img src="" alt="" />
-            <span>Upload an avatar!</span>
-          </label>
           <button type="submit" disabled={isLoading} >
             Sign Me up!
             </button>

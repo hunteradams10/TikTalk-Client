@@ -4,7 +4,7 @@
 }
 
 .chat-menu{
-    flex: 3.5;
+    flex: 1.5;
     opacity: 90%;
     background-color: rgb(251, 154, 51);
 }
@@ -36,7 +36,7 @@
     margin-top: 5px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding-bottom: 20px;
 }
 
@@ -44,19 +44,22 @@
     width: 80%;
     height: 90px;
     padding: 10px;
+    border: none;
+    border-radius: 8px;
 }
 
 .chat-submit-button{
     width: 70px;
     height: 40px;
     border: none;
-    border-radius: 5px;
-    background-color: teal;
-    color: white;
+    border-radius: 8px;
+    background-color: #ff9626;
+    color: rgb(29, 29, 29);
     cursor: pointer;
+    margin-left: 5px;
 }
 
-.chat-menu-wrapper,.chat-box-wrapper,.online-wrapper{
+.chat-menu-wrapper,.chat-box-wrapper{
     padding: 10px;
     height: 100%;
 }

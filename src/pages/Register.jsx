@@ -1,58 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignup } from "../hooks/useSignup";
-// import Axios from 'axios';
+import { clearAllIntervals } from "../utils/utils";
 
 const Register = () => {
-
-  // const [data, setData] = useState([])
-
-    // setting state for submitting email, username and password to back-end API
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [username, setUsername] = useState('');
-
-    // // image verification, preview once uploaded
-    // const [image, setImage] = useState(null);
-    // const [uploadingImage, setUploadingImage] = useState(false);
-    // const [imagePreview, setImagePreview] = useState(null);
-
-    // function validateImg(e){
-    //     const file = e.target.files[0]
-    //     if(file.size >= 1048576){
-    //         return alert("Your image is too powerful! Max 1MB");
-    //     } else{
-    //         setImage(file);
-    //         setImagePreview(URL.createObjectURL(file))
-    //     }
-    // }
-
-    // async function uploadImage(){
-    //     const data = new FormData();
-    //     data.append('file', image);
-    //     data.append('upload_preset', 'defaultAvatarImage')
-    //     try{
-    //         setUploadingImage(true)
-    //         let response = await fetch('https://api.cloudinary.com/v1_1/dubax843g/image/upload', {
-    //             method: 'post',
-    //             body: data
-
-    //         })
-    //         const urlData = await response.json();
-    //         setUploadingImage(false);
-    //         return urlData.url 
-    //     } catch(error){
-    //         setUploadingImage(false);
-    //         console.log(error)
-    //     }
-    // }
-    // // logic for alerts when avatar is not uploaded
-    // async function handleSignup(e) {
-    //     e.preventDefault();
-    //     if(!image) return alert("Heyyy you forgot to upload an avatar!");
-    //     const url = await uploadImage(image)
-    //     console.log(url);
-    // }
     const navigate = useNavigate();
 
     const [username, setUsername] = useState();
@@ -62,17 +13,14 @@ const Register = () => {
 
     const handleSubmit = async(e) => {
       e.preventDefault();
-      // try{
-      //   const url = "https://tiktalk-server.codergirlsu.dev/users/sign-up"
-      //   const res = await Axios.post(url, data).then(navigate("/chat"))
-      //   console.log(res)
-      // } catch(error) {
-      //     setError(error.response.data.message)
-      //     console.log({error})
-      //   }
 
-      await signup(username, email, password).then({signup} ? navigate("/chat") : null)
+      await signup(username, email, password)
+      navigate("/chat")
     }
+
+    useEffect(()=> {
+      clearAllIntervals()
+    })
 
   return (
     <div className="form-cont">

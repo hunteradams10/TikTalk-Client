@@ -3,17 +3,16 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { getAuth } from "firebase/auth"
 
 function Navbar() {
-  const { user } = useAuthContext();
+  const auth = getAuth()
 
   const navigate = useNavigate();
-
   const { logout } = useLogout();
 
-  const handleClick = () => {
-    logout();
+  const handleClick = async () => {
+    await logout();
     navigate("/");
   };
 
@@ -33,10 +32,10 @@ function Navbar() {
         <h1>Tiktalk 🎃</h1>
       </Link>
 
-      {user && (
+      {auth.currentUser && (
         <ul>
           <li>
-            <span className="username">{user.displayName}</span>
+            <span className="username">{auth.currentUser.name}</span>
           </li>
           <li>
             <button className="button" onClick={handleClick}>
@@ -45,7 +44,7 @@ function Navbar() {
           </li>
         </ul>
       )}
-      {!user && (
+      {!auth.currentUser && (
         <ul>
           <li>
             <Link to="/">Login</Link>

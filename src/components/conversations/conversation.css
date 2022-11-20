@@ -6,6 +6,10 @@
     cursor: pointer;
 }
 
+.active{
+    background-color: #fa8100 !important;
+}
+
 .conversation:hover{
     background-color: rgb(253, 188, 117) !important;
 }

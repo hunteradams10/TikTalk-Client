@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from '../hooks/useLogin'
 import { useNavigate } from "react-router-dom";
+import { clearAllIntervals } from "../utils/utils";
 
 const Login = () => {
 
@@ -13,18 +14,15 @@ const Login = () => {
 
     const handleSubmit = async(e) => {
       e.preventDefault();
-      // try{
-      //   const url = "https://tiktalk-server.codergirlsu.dev/users/sign-up"
-      //   const res = await Axios.post(url, data).then(navigate("/chat"))
-      //   console.log(res)
-      // } catch(error) {
-      //     setError(error.response.data.message)
-      //     console.log({error})
-      //   }
-
-      await login(email, password)
-      navigate("/chat")
+      let res = await login(email, password)
+      if (!res.error) {
+        navigate("/chat")
+      }
     }
+
+    useEffect(()=> {
+      clearAllIntervals()
+    })
 
   return (
     <div className="form-cont">

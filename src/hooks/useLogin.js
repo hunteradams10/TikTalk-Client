@@ -11,7 +11,14 @@ export const useLogin = () => {
         setError(null)
 
         const auth = getAuth();
-        await signInWithEmailAndPassword(auth, email, password)
+        try {
+            let res = await signInWithEmailAndPassword(auth, email, password)
+            return res
+        } catch (e) { 
+            setError("Could not sign you in using these details")
+            setIsLoading(false)
+            return { error : e}
+        }
     }
 
     return { login, isLoading, error }

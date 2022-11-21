@@ -3,6 +3,8 @@
     height: calc(100vh - 6vh);
 }
 
+
+
 .chat-menu{
     flex: 1;
     background-color: #ff9626;

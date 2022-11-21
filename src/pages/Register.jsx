@@ -26,7 +26,7 @@ const Register = () => {
     <div className="form-cont">
       <div className="form-wrap">
         <span className="brand">
-          <Link to="/login">TikTalk <span className="pumpkin">🎃</span></Link>
+          <Link to="/">TikTalk <span className="pumpkin">🎃</span></Link>
         </span>
         <span className="greeting">
           <p>Hail, friend! So you need some keys?</p>

@@ -44,6 +44,7 @@ body{
     .brand {
       color: $color-white;
       background-color: $color-black;
+      color: white;
       font-weight: bold;
       font-size: 26px;
       padding: 10px 60px;
@@ -51,6 +52,7 @@ body{
       align-items: center;
       font-family: "Poor Story", cursive;
       a{
+        color: white;
         text-decoration: none;
       }
       a:visited{

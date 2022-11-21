@@ -117,8 +117,10 @@ async function handleLeaveGroup() {
                 return (<Message key={message._id} data={message}/>)
               })}
             </div>
+            <div className='add-and-leave-group'>
             <AddToConversation currentConversationId={currentConversationId}/>
-            <button onClick={handleLeaveGroup}>Leave group</button>
+            <button className='leave-group-button' onClick={handleLeaveGroup}>Leave</button>
+            </div>
             <div className="chat-box-bottom">
               <textarea className="chat-message-input" placeholder="say something!" value={newMessage} onChange={handleOnChange}></textarea>
               <button className="chat-submit-button" onClick={handleSend}>Send</button>

@@ -79,3 +79,19 @@
     padding: 10px;
     height: 100%;
 }
+
+.add-and-leave-group{
+    display: flex;
+    justify-content: center;
+}
+
+.leave-group-button{
+    width: 10%;
+    background-color: rgb(212, 76, 76);
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 11px;
+    padding: 5px;
+    color: white;
+}

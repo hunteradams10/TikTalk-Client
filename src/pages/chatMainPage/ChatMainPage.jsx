@@ -112,6 +112,13 @@ async function handleLeaveGroup() {
         </div>
         <div className="chat-box">
           <div className="chat-box-wrapper">
+            <div className="custom-select">
+              <select>
+              { conversations.map((group) => {
+                return (<option><Conversation group={group} key={group._id} groupChangeFunc={setCurrentConversationId} currentCoversationId={currentConversationId} /></option>)
+              })}
+              </select>
+            </div>
             <div className="chat-box-top">
               { history.map((message)=>{
                 return (<Message key={message._id} data={message}/>)
@@ -119,7 +126,7 @@ async function handleLeaveGroup() {
             </div>
             <div className='add-and-leave-group'>
             <AddToConversation currentConversationId={currentConversationId}/>
-            <button className='leave-group-button' onClick={handleLeaveGroup}>Leave</button>
+            <button className='leave-group-button' onClick={handleLeaveGroup}>Leave Group</button>
             </div>
             <div className="chat-box-bottom">
               <textarea className="chat-message-input" placeholder="say something!" value={newMessage} onChange={handleOnChange}></textarea>

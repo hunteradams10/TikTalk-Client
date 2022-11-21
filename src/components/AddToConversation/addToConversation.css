@@ -1,0 +1,31 @@
+.invite-to-convo-input{
+    background-color: gray;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 11px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-right: 6px;
+}
+
+.invite-to-convo-input::placeholder{
+    color: white;
+}
+
+.add-button{
+    background-color: gray;
+    color: white;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: none;
+    border-radius: 5px;
+    font-size: 11px;
+    cursor: pointer;
+
+}

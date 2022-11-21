@@ -1,6 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { useState } from 'react'
 import Axios from "axios"
+import './addToConversation.css'
 
 const AddToConversation = ({currentConversationId}) => {
     const auth = getAuth()
@@ -28,8 +29,8 @@ const AddToConversation = ({currentConversationId}) => {
 
     return (
         <div>
-            <input type="text" onChange={handleOnChange} value={email} placeholder="Invite by email address ..." />
-            <button onClick={handleOnClick}>Add</button>
+            <input className="invite-to-convo-input" type="text" onChange={handleOnChange} value={email} placeholder="Invite by email..." />
+            <button className='add-button' onClick={handleOnClick}>Add</button>
         </div>
     )
 }

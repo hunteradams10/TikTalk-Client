@@ -28,7 +28,7 @@ const Login = () => {
     <div className="form-cont">
       <div className="form-wrap">
         <span className="brand">
-          <Link to="/login">TikTalk <span className="pumpkin">🎃</span></Link>
+          <Link to="/">TikTalk <span className="pumpkin">🎃</span></Link>
         </span>
         <span className="greeting">
           <p>Hail, friend! Did you bring your keys?</p>

@@ -1,12 +1,22 @@
 # TikTalk🎃, a MERN Application
 
+TikTalk is a Halloween-themed chat application which allows people to communicate in groups. It is built with React, ExpressJS, NodeJS, and MongoDB (MERN stack). It has been deployed on AWS (EC2 instances) and Netlify.
+
 ---
 
-🎃 Staging/Development App: https://www.tiktalkproject.com 
+- Production client app: https://www.tiktalkproject.com/ 
 
-👻 Deployed App: https://www.tiktalkproject.com/ 
+- Production backend service: https://tiktalk-server.codergirlsu.dev
 
-TikTalk is a Halloween-themed chat application built with React, ExpressJS, NodeJS, and MongoDB. It has been deployed on [server] and Netlify.
+- Staging/Development client app: https://www.tiktalkproject.com 
+
+- Staging/Development backend service: http://tiktalk-dev-server.codergirlsu.dev
+
+- Client Repo: https://github.com/hunteradams10/TikTalk-Client
+
+- Server Repo: https://github.com/coderGirlSu/TikTalk-server
+
+- Part A Documentation Repo: https://github.com/coderGirlSu/TikTalk-documentation
 
 ---
 
@@ -34,6 +44,8 @@ Client-Side:
 - Open a terminal, make sure it's in the current directory, and run `npm i` or `npm install` to make sure that all the required files are downloaded into the `package.json`.
 - In that terminal, run `npm start` to run the client-side application in a new browser window.
 - The server will expect requests from `localhost:3000`, so it should all be good! Happy chatting! 🦇
+
+---
 
 ## Libraries and Dependencies
 
@@ -68,13 +80,38 @@ Client-Side:
 
 ---
 
-[ TESTING ]
+## Environments
 
-## TESTING STUFF
+In this project we set up two environments. One environment is for development and the other is for production. Each environment is split into two parts. Part one is a front end server running in Netlify. Part two is a backend server running in AWS as an EC2 instance. Each environment also has its own instance of MongoDB and its own instance of firebase configured.
+
+When either the front-end or the back end code starts, it reads environment variables to determine which environment it is running in. Using environment variables such as DB connection string, Firebase private key, API key and port number it can connect to the other related services in the same environment, such as the database or Firebase.
+
+### AWS EC2 instances
+
+In the screenshot below you can see the two EC2 instances running. One instance represents the development backend server and the other the production backend server. The backend servers use the node package `dotenv` to read environment files containing environment variables related to the specific environment they are in.
+
+![](docs/environments%20screenshots/AWS%20EC2%20instances.png)
+
+[frontend environment screenshots]
 
 ---
 
-## Screenshots
+## Frontend test coverage
+
+[frontend test coverage screenshot]
+## Backend server test coverage
+
+![](docs/test%20screenshots/server%20test%20results.png)
+
+---
+
+## Postman tests
+
+[postman screenshots]
+
+---
+
+## Application Screenshots
 
 **Register**
 
@@ -128,16 +165,28 @@ As we neared our deadline, the `doing` column started to shrink:
 
 There were some small tasks that were not added, but we managed to keep track of them.
 
+---
+
+## Commits and PRs
+
+Below is evidence of the client and server side commits and PRs throughout the project.
+
+Client commits
+
+![](docs/github%20screenshots/client-commits.png)
+
+Client PRs
+
+![](docs/github%20screenshots/client-prs.png)
+
+Server commits
+
+![](docs/github%20screenshots/server-commits.png)
+
+Server PRs
+
+![](docs/github%20screenshots/server-prs.png)
+
 ## Reflection
 
 It was a huge joy and a huge challenge to build this application, but Hunter Adams and Su Zhang are very proud of it. We found out that we didn't have enough time to implement every feature that we wanted to, but intend to add these in future. The project-management, although it was a lifesaver, was a little bit cumbersome in its details and the PR card-numbering system was largely abandoned on the front-end, due to the amount of fixes and changes that needed to be made and the time limit in which to make them. The teamwork and communication, however, was almost flawless. Su and Hunter stayed in constant communication every step of the way. Due to the enormity of the front-end, Su and Hunter decided to work together on it once the back-end was finished, and this contributed enormously to the product being completed by the due date. The developers are enormously proud of their work.
-
-
-
-
-
-
-
-
-
-

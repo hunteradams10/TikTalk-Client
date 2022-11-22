@@ -8,7 +8,7 @@ TikTalk is a Halloween-themed chat application which allows people to communicat
 
 - Production backend service: https://tiktalk-server.codergirlsu.dev
 
-- Staging/Development client app: https://www.tiktalkproject.com 
+- Staging/Development client app: https://tiktalkdevelopment.netlify.app
 
 - Staging/Development backend service: http://tiktalk-dev-server.codergirlsu.dev
 

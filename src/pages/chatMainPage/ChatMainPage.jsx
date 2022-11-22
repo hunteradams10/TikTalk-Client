@@ -112,13 +112,6 @@ async function handleLeaveGroup() {
         </div>
         <div className="chat-box">
           <div className="chat-box-wrapper">
-            {/* <div className="custom-select">
-              <select>
-              { conversations.map((group) => {
-                return (<option><Conversation group={group} key={group._id} groupChangeFunc={setCurrentConversationId} currentCoversationId={currentConversationId} /></option>)
-              })}
-              </select>
-            </div> */}
             <div className="chat-box-top">
               { history.map((message)=>{
                 return (<Message key={message._id} data={message}/>)

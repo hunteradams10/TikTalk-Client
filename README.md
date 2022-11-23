@@ -121,7 +121,9 @@ And the development environment, which is set to manual deploys from the `build`
 
 ## Testing
 
-Manual test logs: [Link]
+User Manual test logs
+
+![](docs/test%20screenshots/Screen%20Shot%202022-11-23%20at%208.13.20%20pm.png)
 ### Frontend test coverage
 
 [frontend test coverage screenshot]

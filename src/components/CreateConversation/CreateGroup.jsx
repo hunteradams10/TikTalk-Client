@@ -1,7 +1,10 @@
+// imports to be used on this page
 import { useState } from "react"
 import { getAuth  } from "firebase/auth";
 import Axios from "axios"
-import './createConversation.css'
+import './createGroup.css'
+
+// the auth is set, as well as a state for the group name to maintain it. An event handler is implemented to be used with state. When the user clicks "create group", their token is checked, and a post request is sent to the API. If the auth is correct, the new group is returned and the "create group" field is set to an empty string. 
 
 const CreateGroup = () => {
     const auth = getAuth()
@@ -25,7 +28,7 @@ const CreateGroup = () => {
 
         setGroupName("")
     }
-
+    // the functions above are implemented in the return statement on their respective field and button.
     return (
         <div>
             <h3 className="groups-heading">Your Groups <span className="groups-bat">🦇</span></h3>

@@ -1,5 +1,8 @@
+// imports to be used on this page
 import React from 'react'
 import './conversation.css'
+
+// ??????????????????
 
 function Conversation({group, groupChangeFunc, currentCoversationId}) {
   const handleOnClick = (id) => {

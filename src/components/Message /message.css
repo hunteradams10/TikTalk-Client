@@ -1,3 +1,5 @@
+/* styling for the message component. This took a lot of work for responsiveness and positioning, and controls which message is displayed on which side of the page, as well as all the styling for the messages container and its descendents. */
+
 .message{
     display: flex;
     flex-direction: column;

@@ -1,4 +1,4 @@
-// I have two pages with the same styling, so I used scss for this.
+// SCSS is only used for login and register page because they have the same styling. This controls all the styling for both pages. It controls all of the forms and their containers, font size and colours, as well as link behaviour and styling. The padding, margin and box sizing is reset for the whole page, which is better for responsiveness. Flex is used in everything to make sure the elements are responsive, and all colours and behaviour is set for the elements and their descendents (a benefit of SCSS, being able to embed descendent elements like this!).
 
 // Colour Variables
 
@@ -7,6 +7,8 @@ $color-grey: #333332;
 $color-black: #03071e;
 $color-white: #ffffff;
 $color-lightgrey: #cccfcd;
+
+// font import
 
 @import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
 

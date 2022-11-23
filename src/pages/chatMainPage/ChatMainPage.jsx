@@ -24,7 +24,6 @@ function ChatMainPage() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("user change");
         fetchData();
       }
     });

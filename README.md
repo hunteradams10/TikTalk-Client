@@ -92,7 +92,19 @@ In the screenshot below you can see the two EC2 instances running. One instance 
 
 ![](docs/environments%20screenshots/AWS%20EC2%20instances.png)
 
-[frontend environment screenshots]
+## Front-End Environments
+
+Here is a screenshot of the two environments running on Netlify. One is a development environment, and the other is the production environment.
+
+![dev and prod environments](./docs/front-end%20environments/both-enviros.png)
+
+Just the front-end development enviroment, which is set to automatic deploys from Github:
+
+![dev enviro](./docs/front-end%20environments/dev%20environment.png)
+
+And the development environment, which is set to manual deploys from the `build` folder in React:
+
+![prod enviro](./docs/front-end%20environments/prod%20enviro.png)
 
 ---
 
@@ -163,15 +175,19 @@ As we neared our deadline, the `doing` column started to shrink:
 
 ![shrinking-more](./docs/trello%20screenshots/shrink-more.png)
 
-There were some small tasks that were not added, but we managed to keep track of them.
+There were some small tasks that were added towards the end, once the main project was mostly done:
+
+![almost-done](./docs/trello%20screenshots/nearing-end.png)
+
+![done](./docs/trello%20screenshots/done.png)
 
 ---
 
 ## Commits and PRs
 
-Below is evidence of the client and server side commits and PRs throughout the project.
+Below is evidence of the client and server side commits and PRs throughout the project. We worked together as a team and used upstream workflows and pull requests to make changes to the main code. We had two seperate repos for the client and server side, as the delegations based on our strengths made this approach more practical.
 
-Client commits
+Client commits (over 130 total)
 
 ![](docs/github%20screenshots/client-commits.png)
 
@@ -189,4 +205,4 @@ Server PRs
 
 ## Reflection
 
-It was a huge joy and a huge challenge to build this application, but Hunter Adams and Su Zhang are very proud of it. We found out that we didn't have enough time to implement every feature that we wanted to, but intend to add these in future. The project-management, although it was a lifesaver, was a little bit cumbersome in its details and the PR card-numbering system was largely abandoned on the front-end, due to the amount of fixes and changes that needed to be made and the time limit in which to make them. The teamwork and communication, however, was almost flawless. Su and Hunter stayed in constant communication every step of the way. Due to the enormity of the front-end, Su and Hunter decided to work together on it once the back-end was finished, and this contributed enormously to the product being completed by the due date. The developers are enormously proud of their work.
+It was a huge joy and a huge challenge to build this application, but Hunter Adams and Su Zhang are very proud of it. We found out that we didn't have enough time to implement every feature that we wanted to (such as a lightmode, drop-down for responsive Chats column), but intend to add these in future. The project-management, although it was a lifesaver, was a little bit cumbersome in its details and the PR card-numbering system was largely abandoned on the front-end, due to the amount of fixes and changes that needed to be made and the time limit in which to make them... and also some forgetfulness. The teamwork and communication, however, was almost flawless. Su and Hunter stayed in constant communication every step of the way. Due to the enormity of the front-end, Su and Hunter decided to work together on it once the back-end was finished, and this contributed enormously to the product being completed by the due date. The developers are enormously proud of their work.

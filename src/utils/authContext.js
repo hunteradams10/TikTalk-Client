@@ -1,7 +1,7 @@
 import { createContext, useReducer, useEffect } from "react";
 
 export const authContext = createContext();
-
+// a reducer is used to keep track of login and logout actions. Login is used for register, too, because the actions are the same
 export const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
@@ -12,6 +12,8 @@ export const authReducer = (state, action) => {
       return state;
   }
 };
+
+// authContextProvider wraps all children, implements the reducer defined above. It can be used everywhere in the app to handle authentication state.
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {

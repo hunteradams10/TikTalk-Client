@@ -1,7 +1,9 @@
 import './message.css'
+// imports for this page
 import { getAuth } from "firebase/auth";
 import React from 'react'
 
+// the auth is checked and the sender IDs are compared for CSS purposes. If the message is from the logged in user, it appears on the right. If not, it appears on the left. The senders name is returned next to the message body, along with their message. "moment" is used here to show the correct date and time.
 function Message({data}) {
   const auth = getAuth()
 
@@ -11,8 +13,6 @@ function Message({data}) {
           <div className="sender-name">
             {data.senderName}
             </div>
-            {/* <img className="message-image" src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?cs=srgb&dl=pexels-stefan-stefancik-91227.jpg&fm=jpg&_gl=1*nmfcye*_ga*NzgwNjU2MzM1LjE2NjgxNTI0MzY.*_ga_8JE65Q40S6*MTY2ODMzMDAzMy41LjEuMTY2ODMzMjIzMy4wLjAuMA.." alt="" /> */}
-            {/* <p className='messages-ghost'>👻</p> */}
             <p className="message-text">{data.message}</p>
         </div>
         <div className="message-bottom">

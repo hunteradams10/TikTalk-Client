@@ -1,8 +1,11 @@
+// imports for this page
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from '../hooks/useLogin'
 import { useNavigate } from "react-router-dom";
 import { clearAllIntervals } from "../utils/utils";
+
+// states for email and password are used, as well as storing information for the useLogin hook. When the user logs in, they will be redirected to the chats page if there is no error and all intervals will be cleared.
 
 const Login = () => {
 
@@ -23,6 +26,8 @@ const Login = () => {
     useEffect(()=> {
       clearAllIntervals()
     })
+
+    // the return statement has a lot of event handlers defined above, to handle the input and submit. A few safety measures are in place to make sure the fields are filled.
 
   return (
     <div className="form-cont">

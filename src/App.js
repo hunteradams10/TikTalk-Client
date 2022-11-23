@@ -1,3 +1,4 @@
+// imports for this page
 import "./style.scss";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -6,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 function App() {
-
+  //browser router is used to handle navigation routes.
   return (
     <div>
         <BrowserRouter>

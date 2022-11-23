@@ -2,7 +2,7 @@
 import React from 'react'
 import './conversation.css'
 
-// ??????????????????
+// This component renders one group / conversation
 
 function Conversation({group, groupChangeFunc, currentCoversationId}) {
   const handleOnClick = (id) => {

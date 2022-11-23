@@ -6,11 +6,11 @@ TikTalk is a Halloween-themed chat application which allows people to communicat
 
 - Production client app: https://www.tiktalkproject.com/ 
 
-- Production backend service: https://tiktalk-server.codergirlsu.dev
+- Production backend service (JSON requests / responses): https://tiktalk-server.codergirlsu.dev
 
 - Staging/Development client app: https://tiktalkdevelopment.netlify.app
 
-- Staging/Development backend service: http://tiktalk-dev-server.codergirlsu.dev
+- Staging/Development backend service (JSON requests / responses): http://tiktalk-dev-server.codergirlsu.dev
 
 - Client Repo: https://github.com/hunteradams10/TikTalk-Client
 
@@ -124,9 +124,11 @@ And the development environment, which is set to manual deploys from the `build`
 User Manual test logs
 
 ![](docs/test%20screenshots/Screen%20Shot%202022-11-23%20at%208.13.20%20pm.png)
+
 ### Frontend test coverage
 
-[frontend test coverage screenshot]
+![](docs/test%20screenshots/frontend%20tests.png)
+
 ### Backend server test coverage
 
 ![](docs/test%20screenshots/server%20test%20results.png)

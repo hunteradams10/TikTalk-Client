@@ -76,8 +76,6 @@ Client-Side:
 - `"jwt-decode": "^3.1.2",` - `JWT decode` is a means to decode `jwt` tokens when they are sent from the back-end for authentication.
 - `"axios": "^1.1.3"` - `Axios` is a Javascript library that allows us to use the `Promise API` with HTTP requests. It handles all such requests and returns a promise - the result of which can be handled in React.
 
-## Dev-Dependencies (Client)
-
 ---
 
 ## Environments
@@ -98,7 +96,7 @@ Here is a screenshot of the two environments running on Netlify. One is a develo
 
 ![dev and prod environments](./docs/front-end%20environments/both-enviros.png)
 
-Just the front-end development enviroment, which is set to automatic deploys from Github:
+Just the front-end development environment, which is set to automatic deploys from Github:
 
 ![dev enviro](./docs/front-end%20environments/dev%20environment.png)
 
@@ -108,18 +106,114 @@ And the development environment, which is set to manual deploys from the `build`
 
 ---
 
-## Frontend test coverage
+## API Endpoints
+
+---
+| Authentication      | Messages           | Groups                         |
+| ------------------- | ------------------ | ------------------------------ |
+| POST /users/sign-in | POST /messages/    | GET /groups/history?groupId=   |
+| POST /users/sign-up |                    | PATCH /groups/leave            |
+|                     |                    | PATCH /groups/add              |
+|                     |                    | POST /groups/create            |
+|                     |                    | GET /groups/                   |
+
+---
+
+## Testing
+
+User Manual test logs
+
+![](docs/test%20screenshots/Screen%20Shot%202022-11-23%20at%208.13.20%20pm.png)
+### Frontend test coverage
 
 [frontend test coverage screenshot]
-## Backend server test coverage
+### Backend server test coverage
 
 ![](docs/test%20screenshots/server%20test%20results.png)
 
 ---
 
-## Postman tests
+### Postman server testing and error messages
 
-[postman screenshots]
+User sign in
+
+![](docs/test%20screenshots/sign%20in.png)
+
+
+Sign in with invalid email
+![](docs/test%20screenshots/sign%20in%20with%20invalid%20email.png)
+
+
+Sign in with invalid password
+
+![](docs/test%20screenshots/sign%20in%20with%20invalid%20password.png)
+
+User sign up
+
+![](docs/test%20screenshots/sign%20up.png)
+
+
+Sign in with wrong password
+
+![](docs/test%20screenshots/sign%20in%20with%20wrong%20eamil.png)
+
+
+Sign up with invalid email
+
+![](docs/test%20screenshots/sign%20up%20with%20invalid%20email.png)
+
+
+Sign up with invalid password
+
+![](docs/test%20screenshots/sign%20up%20with%20invalid%20password.png)
+
+Sign up with registered email address
+
+![](docs/test%20screenshots/sign%20up%20with%20registered%20email%20address.png)
+
+
+Create a group
+
+![](docs/test%20screenshots/create%20a%20group.png)
+
+
+Add user to a group
+
+![](docs/test%20screenshots/add%20user%20to%20a%20group.png)
+
+
+Add existing user to a group
+
+![](docs/test%20screenshots/Add%20existing%20user%20to%20a%20group.png)
+
+
+Get all groups that user is in
+
+![](docs/test%20screenshots/get%20all%20groups%20that%20user%20is%20in.png)
+
+Get message history
+
+![](docs/test%20screenshots/get%20history.png)
+
+
+Leave a group as last user
+
+![](docs/test%20screenshots/leave%20a%20gourp%20as%20last%20user.png)
+
+
+Leave a group
+
+![](docs/test%20screenshots/leave%20a%20group.png)
+
+
+Send a message with invalid token
+
+
+![](docs/test%20screenshots/send%20message%20with%20invalid%20token.png)
+
+Send a message in a group
+
+![](docs/test%20screenshots/send%20message.png)
 
 ---
 
